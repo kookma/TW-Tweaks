@@ -1,0 +1,36 @@
+caption: Icon Gallery
+list-after: 
+tags: $:/tags/MoreSideBar
+title: $:/plugins/kookma/tweaks/sidebar/more/icon-gallery
+type: text/vnd.tiddlywiki
+
+\define search-box(tempTiddler)
+<$keyboard key="escape" actions="""<$action-setfield $tiddler=<<__tempTiddler__>> $field=text $value=""/>""" >
+<$edit-text tiddler=<<__tempTiddler__>>
+  field=text 	tag=input 	type=search
+	default=""  placeholder=" search in titles"
+	class="search-box" />
+</$keyboard>
+\end
+<style>
+.search-box {
+  border:none;
+  border-bottom:1px solid #ccc;
+  outline-style: none;
+  width:20em
+}.search-box::placeholder {
+  font-size: 0.9em;
+	color: #bbb
+}.search-box label{display:block;}
+</style>
+
+<$tiddler tiddler="$:/plugins/kookma/tweaks/sidebar/more/icon-gallery">
+
+<<search-box label:"Search in icons" tempTiddler:"$:/temp/icon-gallery">>
+
+<i class="tc-image-chooser">
+<<image-picker-list "[all[shadows+tiddlers]tag[$:/tags/Image]search:title{$:/temp/icon-gallery}]" "<$action-sendmessage $message='tm-copy-to-clipboard' $param=<<imageTitle>>/>">>
+</i>
+
+
+</$tiddler>

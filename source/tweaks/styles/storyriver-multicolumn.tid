@@ -1,0 +1,20 @@
+code-body: yes
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/tweaks/styles/storyriver-multicolumn
+type: text/vnd.tiddlywiki
+
+\rules only conditional filteredtranscludeinline transcludeinline macrodef macrocallinline html
+
+/* create story river in two column layout */
+<%if [[$:/config/Tweaks]getindex[multicolumn-storyriver]match[yes]] %>
+
+.tc-story-river {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tc-tiddler-frame {
+	max-width: 49%; margin-right: 1%; /* for two columns */
+	/* max-width: 32%; margin-right: 1%; for three columns */
+}
+<%endif%>

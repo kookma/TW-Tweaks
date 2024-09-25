@@ -1,0 +1,16 @@
+{
+    "title": "$:/plugins/kookma/tweaks",
+    "name": "Tweaks",
+    "description": "Improvements, customizations, and fixes for TiddlyWiki",
+    "author": "Mohammad Rahmani",
+    "version": "0.1.2",
+    "stability": "STABILITY_1_EXPERIMENTAL",
+    "core-version": ">=5.3.5",
+    "source": "https://github.com/kookma/TW-Tweaks",
+    "list": "readme license history",
+    "parent-plugin": "",
+    "dependents": "",
+    "plugin-type": "plugin",
+    "packaged-by": "Gatha on 25th September 2024, 18:36:50",
+    "plugin-priority": ""
+}

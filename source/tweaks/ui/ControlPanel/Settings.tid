@@ -1,0 +1,24 @@
+caption: Tweaks
+tags: $:/tags/ControlPanel/SettingsTab $:/tags/MoreSideBar
+title: $:/plugins/kookma/tweaks/ui/ControlPanel/Settings
+type: text/vnd.tiddlywiki
+
+\procedure disable-multicolumn-storyriver() 
+	<$action-setfield $tiddler="$:/config/Tweaks" $index="multicolumn-storyriver" />
+\end
+
+\procedure disable-centered-storyriver()
+	<$action-setfield $tiddler="$:/config/Tweaks" $index="centered-storyriver" />
+\end
+
+
+These settings let you customise the behaviour of Tweaks plugin.
+
+---
+
+;Show Tweaks setting in more sidebar
+:<$checkbox tiddler="$:/plugins/kookma/tweaks/ui/ControlPanel/Settings" tag="$:/tags/MoreSideBar"> Show setting in more sidebar</$checkbox>
+
+;Options
+:<$checkbox tiddler="$:/config/Tweaks" index="multicolumn-storyriver" checked="yes" unchecked="no" default="no" checkactions=<<disable-centered-storyriver>> > Multicolumn storyriver</$checkbox>
+:<$checkbox tiddler="$:/config/Tweaks" index="centered-storyriver" checked="yes" unchecked="no" default="no" checkactions=<<disable-multicolumn-storyriver>> > Center storyriver when sidebar closed</$checkbox>

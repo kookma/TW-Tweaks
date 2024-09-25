@@ -1,0 +1,10 @@
+code-body: yes
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/tweaks/styles/topbar
+type: text/vnd.tiddlywiki
+
+<$list filter="[[$:/state/sidebar]get[text]] +[else[yes]match[no]]" variable="ignore">
+.tc-topbar{
+		background-color:<<colour page-background>>;
+}
+</$list>

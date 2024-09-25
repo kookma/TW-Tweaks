@@ -1,0 +1,13 @@
+/*This fix is used to prevent hidden scrolling contents in vertical tabs like tagcloud */
+.tc-tab-content.tc-vertical {
+	display: inline-block;
+	vertical-align: top;
+	padding-top: 0;
+	padding-left: 14px;
+	border-left: 1px solid transparent;
+	-webkit-flex: 1 0 70%;
+	flex: 1 0 70%;
+	overflow:unset;
+}
+
+/* note the last line from overflow:auto; changed to overflow:unset; */

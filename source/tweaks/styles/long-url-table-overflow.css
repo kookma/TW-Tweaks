@@ -1,0 +1,17 @@
+/* 
+https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+https://github.com/Jermolene/TiddlyWiki5/discussions/6999
+fixes long url overflows in table
+*/
+.tc-tiddler-frame a
+ {
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap:     break-word;
+  word-break:    break-word;
+  
+  /* Adds a hyphen where the word breaks, if supported (No Blink) 
+  hyphens: auto; */
+
+}

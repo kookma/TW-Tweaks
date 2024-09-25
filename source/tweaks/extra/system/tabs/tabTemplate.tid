@@ -1,0 +1,8 @@
+code-body: yes
+tags: 
+title: $:/tabs/tabTemplate
+type: text/vnd.tiddlywiki
+
+<$tiddler tiddler=<<currentTab>>>
+<$transclude mode="block" />
+</$tiddler>

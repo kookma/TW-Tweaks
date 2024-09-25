@@ -1,0 +1,10 @@
+caption: Spell check
+tags: $:/tags/EditPreview
+title: $:/plugins/kookma/tweaks/tools/spellcheck-editorpreview
+type: text/vnd.tiddlywiki
+
+<$edit-text tiddler=<<currentTiddler>> class="tc-spell-check-preview"/>
+
+<style>
+.tc-spell-check-preview {width:100%;}
+</style>

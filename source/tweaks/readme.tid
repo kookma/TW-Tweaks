@@ -1,0 +1,11 @@
+title: $:/plugins/kookma/tweaks/readme
+type: text/vnd.tiddlywiki
+
+; Tweaks
+Tweaks contains kookma personal improvements, customizations, and fixes for TiddlyWiki
+
+;Code and demo
+For learning plugin features, syntax, tutorial and examples see the plugin demo and code pages
+
+* Demo: https://kookma.github.io/TW-Tweaks/
+* Code: https://github.com/kookma/TW-Tweaks

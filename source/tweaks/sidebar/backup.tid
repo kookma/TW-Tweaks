@@ -1,0 +1,15 @@
+caption: Backup
+tags: $:/tags/SideBar
+title: $:/plugins/kookma/tweaks/sidebar/backup
+type: text/vnd.tiddlywiki
+
+\define lookup-pattern() (?i)^(\$:\/backup|backup)\s*-?\s*\S+
+\define search-pattern() (\$:\/backups|\$:\/backup|backups|backup)\s*-?\s*
+
+<small>List all tiddlers prefixed with <<mono backup(s)>>, and/or  <<mono "~$:/backup(s) -">> (case insensitive)</small>
+
+<$list filter="[all[tiddlers]regexp<lookup-pattern>]">
+<$link to=<<currentTiddler>>>
+<span title=<<currentTiddler>>><$text text={{{ [<currentTiddler>] :map[search-replace:i:regexp<search-pattern>,[]] }}} /></span>
+</$link><br>
+</$list>

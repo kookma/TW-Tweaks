@@ -1,0 +1,34 @@
+caption: {{$:/plugins/kookma/tweaks/images/calendar-plus}} {{$:/language/Buttons/GoogleCalendar/Caption}}
+description: {{$:/language/Buttons/GoogleCalendar/Hint}}
+list-before: $:/core/ui/Buttons/close
+tags: $:/tags/ViewToolbar
+title: $:/plugins/kookma/tweaks/ui/Buttons/add-google-calendar
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+\function line.feed() [charcode[10]]
+\function uri_encoded()
+		[[https://calendar.google.com/calendar/r/eventedit]]
+		=[[?text=]]
+		=[<currentTiddler>encodeuricomponent[]]
+		=[[&details=]]
+		=[{$:/info/url/full}append[#]encodeuricomponent[]]
+		=[<currentTiddler>encodeuricomponent[]encodeuricomponent[]addsuffix[%0A%0A]]
+		=[{!!text}encodeuricomponent[]]
+		=[[&dates=]append<now YYYY0MM0DD>append[/]append<now YYYY0MM0DD>]
+		+[join[]]
+\end
+
+\procedure addToCalendarActions()
+<$action-listops $tiddler=<<currentTiddler>> $tags="[[In Calendar]]"/>
+\end
+
+<$button tooltip={{$:/language/Buttons/GoogleCalendar/Hint}} aria-label={{$:/language/Buttons/GoogleCalendar/Caption}} class=<<tv-config-toolbar-class>> actions=<<addToCalendarActions>> style="padding-left:0;">
+<a href=<<uri_encoded>> class="no-icon" target=_blank>
+	<$list filter="[<tv-config-toolbar-icons>match[yes]]">{{$:/plugins/kookma/tweaks/images/calendar-plus}}</$list>
+	<$list filter="[<tv-config-toolbar-text>match[yes]]"><span class=tc-btn-text>Add to calendar</span></$list>
+</a>
+</$button>
+<!-- see Mario comments
+https://talk.tiddlywiki.org/t/how-to-control-the-generated-href-via-wikilink/10707/16?u=mohammad
+-->

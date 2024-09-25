@@ -1,0 +1,34 @@
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/tweaks/styles/headings
+type: text/vnd.tiddlywiki
+
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline
+
+.tc-tiddler-body > h1,
+.tc-tiddler-preview-preview > h1,
+.tc-tiddler-body > h2,
+.tc-tiddler-preview-preview > h2,
+.tc-tiddler-body > h3,
+.tc-tiddler-preview-preview > h3 {	
+  text-transform: none;
+	border-bottom: 1px solid <<colour table-border>>;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+.tc-tiddler-body > h1,
+.tc-tiddler-preview-preview > h1{
+	font-weight:700;
+	font-size: 1.4em;
+}
+.tc-tiddler-body > h2,
+.tc-tiddler-preview-preview > h2 {
+	font-weight:500;
+	font-size:1.2em;
+}
+
+.tc-tiddler-body > h3,
+.tc-tiddler-preview-preview > h3 {
+	font-weight:400;
+	font-size:1.1em;
+}
+
