@@ -1,0 +1,27 @@
+caption: {{$:/plugins/kookma/tweaks/images/linkedin}} {{$:/language/Buttons/LinkedIn/Caption}}
+description: {{$:/language/Buttons/LinkedIn/Hint}}
+list-before: $:/core/ui/Buttons/close
+tags: $:/tags/ViewToolbar
+title: $:/plugins/kookma/tweaks/ui/Buttons/post-linkedin
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+\procedure baseLinkedInUrl() http://www.linkedin.com/shareArticle?mini=true
+
+
+\procedure shareLinkedInActions()
+	<$action-listops $tiddler=<<currentTiddler>> $tags="[[In LinkedIn]]"/>
+	<$action-sendmessage $message="tm-copy-to-clipboard" $param={{!!text}} />
+	<$action-sendmessage $message="tm-open-external-window" $param=<<baseLinkedInUrl>> />
+\end
+
+<$button tooltip={{$:/language/Buttons/LinkedIn/Hint}} aria-label={{$:/language/Buttons/LinkedIn/Caption}} class=<<tv-config-toolbar-class>> actions=<<shareLinkedInActions>> >
+	<%if [<tv-config-toolbar-icons>match[yes]] %>
+		{{$:/plugins/kookma/tweaks/images/linkedin}}
+	<%endif%>
+	<%if [<tv-config-toolbar-text>match[yes]] %>
+		<span class="tc-btn-text">
+			<$text text={{$:/language/Buttons/LinkedIn/Caption}}/>
+		</span>
+	<%endif%>
+</$button>

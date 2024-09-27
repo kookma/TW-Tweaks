@@ -5,30 +5,35 @@ tags: $:/tags/ViewToolbar
 title: $:/plugins/kookma/tweaks/ui/Buttons/add-google-calendar
 type: text/vnd.tiddlywiki
 
+\procedure tv-filter-export-link() [encodeuricomponent[]addprefix[#]addprefix{$:/info/url/full}]
+
 \whitespace trim
-\function line.feed() [charcode[10]]
-\function uri_encoded()
-		[[https://calendar.google.com/calendar/r/eventedit]]
-		=[[?text=]]
-		=[<currentTiddler>encodeuricomponent[]]
-		=[[&details=]]
-		=[{$:/info/url/full}append[#]encodeuricomponent[]]
-		=[<currentTiddler>encodeuricomponent[]encodeuricomponent[]addsuffix[%0A%0A]]
-		=[{!!text}encodeuricomponent[]]
-		=[[&dates=]append<now YYYY0MM0DD>append[/]append<now YYYY0MM0DD>]
-		+[join[]]
-\end
+
+\procedure baseCalendarURI() https://calendar.google.com/calendar/u/0/r/eventedit
+\procedure linkTemplate() $(baseCalendarURI)$?text=$(get.encoded.title)$&details=$(get.details)$&dates=$(get.dates)$
+
+\function get.encoded.title() [<currentTiddler>encodeuricomponent[]]
+\function get.details()       [<wikifiedText>encodeuricomponent[]]
+\function get.dates()         [<now YYYY0MM0DD>addsuffix[/]addsuffix<now YYYY0MM0DD>]
+\function get.calendar.link() [<linkTemplate>substitute[]]
+
 
 \procedure addToCalendarActions()
 <$action-listops $tiddler=<<currentTiddler>> $tags="[[In Calendar]]"/>
-\end
+<$wikify name="wikifiedText" text={{!!text}} output="html">
+	<$action-sendmessage $message="tm-open-external-window" $param=<<get.calendar.link>> />
+</$wikify>
+\end addToCalendarActions
 
-<$button tooltip={{$:/language/Buttons/GoogleCalendar/Hint}} aria-label={{$:/language/Buttons/GoogleCalendar/Caption}} class=<<tv-config-toolbar-class>> actions=<<addToCalendarActions>> style="padding-left:0;">
-<a href=<<uri_encoded>> class="no-icon" target=_blank>
-	<$list filter="[<tv-config-toolbar-icons>match[yes]]">{{$:/plugins/kookma/tweaks/images/calendar-plus}}</$list>
-	<$list filter="[<tv-config-toolbar-text>match[yes]]"><span class=tc-btn-text>Add to calendar</span></$list>
-</a>
+
+
+<$button tooltip={{$:/language/Buttons/GoogleCalendar/Hint}} aria-label={{$:/language/Buttons/GoogleCalendar/Caption}} class=<<tv-config-toolbar-class>> actions=<<addToCalendarActions>> >
+	<%if [<tv-config-toolbar-icons>match[yes]] %>
+		{{$:/plugins/kookma/tweaks/images/calendar-plus}}
+	<%endif%>
+	<%if [<tv-config-toolbar-text>match[yes]] %>
+		<span class="tc-btn-text">
+			<$text text={{$:/language/Buttons/GoogleCalendar/Caption}}/>
+		</span>
+	<%endif%>
 </$button>
-<!-- see Mario comments
-https://talk.tiddlywiki.org/t/how-to-control-the-generated-href-via-wikilink/10707/16?u=mohammad
--->

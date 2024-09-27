@@ -1,0 +1,39 @@
+caption: {{$:/plugins/kookma/tweaks/images/gmail}} {{$:/language/Buttons/Gmail/Caption}}
+description: {{$:/language/Buttons/Gmail/Hint}}
+list-before: $:/core/ui/Buttons/close
+tags: $:/tags/ViewToolbar
+title: $:/plugins/kookma/tweaks/ui/Buttons/compose-gmail
+type: text/vnd.tiddlywiki
+
+\whitespace trim
+\procedure baseGmailUri() https://mail.google.com/mail/
+\procedure viewMode()     view=cm&fs=1
+\procedure gmailLinkTemplate() $(baseGmailUri)$?$(viewMode)$&to=$(get.recipients)$&cc=$(get.cc)$&bcc=$(get.bcc)$&su=$(get.subject)$&body=$(get.body)$
+
+\function get.recipients() [all[current]get[recipients]]
+\function get.cc()         [all[current]get[cc-recipients]]
+\function get.bcc()        [all[current]get[bcc-recipients]]
+
+\function get.subject()    [all[current]get[title]]
+\function get.body()       [<wikifiedText>encodeuricomponent[]]
+
+\function get.gmail.link() [<gmailLinkTemplate>substitute[]]
+
+\procedure sendGmailActions()
+<$action-listops $tiddler=<<currentTiddler>> $tags="[[In Gmail]]"/>
+<$wikify name="wikifiedText" text={{!!text}} output="formattedtext">
+	<$action-sendmessage $message="tm-open-external-window" $param=<<get.gmail.link>> />
+</$wikify>
+\end
+
+
+<$button tooltip={{$:/language/Buttons/Gmail/Hint}} aria-label={{$:/language/Buttons/GoogleCalendar/Caption}} class=<<tv-config-toolbar-class>> actions=<<sendGmailActions>> >
+	<%if [<tv-config-toolbar-icons>match[yes]] %>
+		{{$:/plugins/kookma/tweaks/images/gmail}}
+	<%endif%>
+	<%if [<tv-config-toolbar-text>match[yes]] %>
+		<span class="tc-btn-text">
+			<$text text={{$:/language/Buttons/Gmail/Caption}}/>
+		</span>
+	<%endif%>
+</$button>
