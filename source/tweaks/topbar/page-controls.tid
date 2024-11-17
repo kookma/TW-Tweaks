@@ -1,15 +1,18 @@
+code-body: yes
 list-before: 
 tags: $:/tags/TopRightBar
 title: $:/plugins/kookma/tweaks/topbar/page-controls
 type: text/vnd.tiddlywiki
 
 \define config-title() $:/config/PageControlButtons/Visibility/$(listItem)$
-<%if [[$:/state/sidebar]get[text]] +[else[yes]match[no]] %>
-<$list filter="[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]" variable="listItem">
-	<$reveal type="nomatch" state=<<config-title>> text="hide">
-		<$transclude tiddler=<<listItem>> mode="inline"/>
-	</$reveal>
-</$list>
-<!-- add extra button not shown on the page -->
-<$transclude tiddler="$:/core/ui/Buttons/advanced-search" mode="inline"/>
+<%if [[$:/config/Tweaks]getindex[right-topbar-pagecontrols]] +[else[no]match[yes]] %>
+	<%if [[$:/state/sidebar]get[text]] +[else[yes]match[no]] %>
+		<$list filter="[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]" variable="listItem">
+			<$reveal type="nomatch" state=<<config-title>> text="hide">
+				<$transclude tiddler=<<listItem>> mode="inline"/>
+			</$reveal>
+		</$list>
+		<!-- add extra button not shown on the page -->
+		<$transclude tiddler="$:/core/ui/Buttons/advanced-search" mode="inline"/>
+	<%endif%>
 <%endif%>

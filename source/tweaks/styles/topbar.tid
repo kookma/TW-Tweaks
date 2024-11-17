@@ -1,10 +1,16 @@
-code-body: yes
 tags: $:/tags/Stylesheet
 title: $:/plugins/kookma/tweaks/styles/topbar
 type: text/vnd.tiddlywiki
 
-<$list filter="[[$:/state/sidebar]get[text]] +[else[yes]match[no]]" variable="ignore">
-.tc-topbar{
+\rules only filteredtranscludeinline transcludeinline macrodef macrocallinline conditional
+<%if [[$:/config/Tweaks]getindex[right-topbar-pagecontrols]else[no]match[yes]] %>
+
+	<%if [[$:/state/sidebar]get[text]else[yes]match[no]] %>
+	
+		.tc-topbar-right{
 		background-color:<<colour page-background>>;
+		border-radius: 1.5em;
 }
-</$list>
+
+	<%endif%>
+<%endif%>

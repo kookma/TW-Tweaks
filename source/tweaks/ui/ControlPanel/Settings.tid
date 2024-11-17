@@ -22,3 +22,4 @@ These settings let you customise the behaviour of Tweaks plugin.
 ;Options
 :<$checkbox tiddler="$:/config/Tweaks" index="multicolumn-storyriver" checked="yes" unchecked="no" default="no" checkactions=<<disable-centered-storyriver>> > Multicolumn storyriver</$checkbox>
 :<$checkbox tiddler="$:/config/Tweaks" index="centered-storyriver" checked="yes" unchecked="no" default="no" checkactions=<<disable-multicolumn-storyriver>> > Center storyriver when sidebar closed</$checkbox>
+:<$checkbox tiddler="$:/config/Tweaks" index="right-topbar-pagecontrols" checked="yes" unchecked="no" default="no" > Display right topbar when sidebar closed</$checkbox>
