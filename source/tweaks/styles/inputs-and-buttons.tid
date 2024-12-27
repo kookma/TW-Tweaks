@@ -1,0 +1,27 @@
+tags: $:/tags/Stylesheet
+title: $:/plugins/kookma/tweaks/styles/inputs-and-buttons
+type: text/vnd.tiddlywiki
+
+/* This tweaks adjusts the thick borders created by some palettes (specially dark ones) for
+buttons and inputs (like search box)
+See https://github.com/TiddlyWiki/TiddlyWiki5/issues/8734
+It should be removed once core is updated
+*/
+html button,
+html input{
+
+	border-style: solid;
+	border-radius: 4px;
+	border-width: 1px;
+	padding: 2px 4px;
+}
+html input{
+	background: inherit;
+	color: inherit;
+	fill: inherit;
+	border-color: <<colour muted-foreground>>;
+}
+
+html button{
+	  cursor: pointer;
+}

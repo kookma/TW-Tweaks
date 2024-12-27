@@ -4,15 +4,23 @@ tags: $:/tags/TopRightBar
 title: $:/plugins/kookma/tweaks/topbar/page-controls
 type: text/vnd.tiddlywiki
 
-\define config-title() $:/config/PageControlButtons/Visibility/$(listItem)$
+\whitespace trim
+\function config-title() [[$:/config/PageControlButtons/Visibility/$(listItem)$]substitute[]]
+\procedure show-page-controls(filter, visibility)
 <%if [[$:/config/Tweaks]getindex[right-topbar-pagecontrols]] +[else[no]match[yes]] %>
 	<%if [[$:/state/sidebar]get[text]] +[else[yes]match[no]] %>
-		<$list filter="[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]" variable="listItem">
-			<$reveal type="nomatch" state=<<config-title>> text="hide">
-				<$transclude tiddler=<<listItem>> mode="inline"/>
-			</$reveal>
+		<$list filter="[subfilter<filter>]" variable="listItem">
+			<$list filter="[subfilter<visibility>]" storyview="pop" variable="ignore">
+				<$let tv-config-toolbar-class={{{ [enlist<tv-config-toolbar-class>] [<listItem>encodeuricomponent[]addprefix[tc-btn-]] +[join[ ]] }}}>
+					<$transclude $tiddler=<<listItem>> $mode="inline"/>
+				</$let>
+			</$list>
 		</$list>
-		<!-- add extra button not shown on the page -->
-		<$transclude tiddler="$:/core/ui/Buttons/advanced-search" mode="inline"/>
 	<%endif%>
-<%endif%>
+<%endif%>		
+\end		
+
+<!-- add all button are shown on the page controls-->
+<<show-page-controls filter:"[all[shadows+tiddlers]tag[$:/tags/PageControls]!has[draft.of]]" visibility:"[<config-title>!text[hide]]">>
+<!-- add extra button not shown on the page controls -->
+<<show-page-controls filter:"$:/core/ui/Buttons/advanced-search" visibility:"True">>
