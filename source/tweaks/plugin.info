@@ -3,7 +3,7 @@
     "name": "Tweaks",
     "description": "Improvements, customizations, and fixes for TiddlyWiki",
     "author": "Mohammad Rahmani",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "stability": "STABILITY_1_EXPERIMENTAL",
     "core-version": ">=5.3.5",
     "source": "https://github.com/kookma/TW-Tweaks",
@@ -11,6 +11,6 @@
     "parent-plugin": "",
     "dependents": "",
     "plugin-type": "plugin",
-    "packaged-by": "Gatha on 27th December 2024, 20:02:17",
+    "packaged-by": "Gatha on 9th January 2025, 19:11:57",
     "plugin-priority": ""
 }

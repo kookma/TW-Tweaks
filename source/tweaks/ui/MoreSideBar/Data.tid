@@ -1,0 +1,36 @@
+caption: User Data
+list-after: $:/core/ui/MoreSideBar/Types
+tags: $:/tags/MoreSideBar
+title: $:/plugins/kookma/tweaks/ui/MoreSideBar/Data
+type: text/vnd.tiddlywiki
+
+\function f.types() [prefix[$:/data/]get[type]sort[]unique[]] -[[text/vnd.tiddlywiki]] 
+\procedure tmpTiddlerSearch() $:/temp/kookma/userdata/search
+\function search-criteria() [<tmpTiddlerSearch>get[text]]
+
+\whitespace trim
+<$transclude $variable=search-box label="" tempTiddler=<<tmpTiddlerSearch>>  placeholder="search in title of user data"/>
+
+<!-- all tiddlers with other types than default type: -->
+<$list filter="[function[f.types]]" variable=thisType>
+	<div class="tc-menu-list-item">
+		<$text text=<<thisType>> />
+		<$list filter="[prefix[$:/data]has[type]type<thisType>search:title<search-criteria>] :and[sort[title]]">
+			<div class="tc-menu-list-subitem">
+				<$link to={{!!title}}><$view field="title"/></$link>
+			</div>
+		</$list>
+	</div>
+</$list>
+
+<!-- all tiddlers with no type or default type: -->
+<%if [prefix[$:/data/]!has[type]] [prefix[$:/data/]type[text/vnd.tiddlywiki]] %>
+	<div class="tc-menu-list-item">
+		<$text text="text/vnd.tiddlywiki" />
+		<$list filter="[prefix[$:/data/]!has[type]] [prefix[$:/data/]type[text/vnd.tiddlywiki]] :filter[search:title<search-criteria>] :and[sort[title]]">
+			<div class="tc-menu-list-subitem">
+				<$link to={{!!title}}><$view field="title"/></$link>
+			</div>
+		</$list>
+	</div>
+<%endif%>
