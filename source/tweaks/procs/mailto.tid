@@ -1,0 +1,9 @@
+tags: $:/tags/Global
+title: $:/plugins/kookma/tweaks/procs/mailto
+type: text/vnd.tiddlywiki
+
+\procedure mailto(email, title)
+<a href=`mailto:$(email)$` class="tc-tiddlylink-external" target="_blank" rel="noopener noreferrer">
+<$text text={{{ [<title>trim[]is[blank]then<email>else<title>] }}} />
+</a>
+\end
