@@ -1,5 +1,5 @@
-/*This fix is used to prevent hidden scrolling contents in vertical tabs like tagcloud */
-.tc-tab-content.tc-vertical {
+/*This fix is used to prevent hidden scrolling contents in vertical tabs like tagcloud in the sidebar*/
+.tc-sidebar-tabs-main .tc-tab-content.tc-vertical {
 	display: inline-block;
 	vertical-align: top;
 	padding-top: 0;

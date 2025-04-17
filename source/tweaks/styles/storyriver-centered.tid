@@ -5,10 +5,11 @@ title: $:/plugins/kookma/tweaks/styles/storyriver-centered
 type: text/vnd.tiddlywiki
 
 \rules only conditional filteredtranscludeinline transcludeinline macrodef macrocallinline html
+\define unit-patt() ^(\d+)(px|em|rem|%|vw|vh|vmin|vmax|cm|mm|in|pt|pc)$
 <%if [[$:/state/sidebar]get[text]match[no]][[$:/config/Tweaks]getindex[centered-storyriver]match[yes]] :and[count[]match[2]] %>
 :not([data-tiddler-title^="Draft of '"]).tc-tiddler-frame  {
 	min-width: 600px;
-	max-width: 50vw;
+	max-width: {{{ [[$:/config/Tweaks]getindex[centered-tiddler-width]trim[]lowercase[]regexp<unit-patt>else[50vw]] }}};
 	margin-left: auto;
 	margin-right: auto;
 }

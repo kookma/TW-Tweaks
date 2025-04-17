@@ -23,3 +23,6 @@ These settings let you customise the behaviour of Tweaks plugin.
 :<$checkbox tiddler="$:/config/Tweaks" index="multicolumn-storyriver" checked="yes" unchecked="no" default="no" checkactions=<<disable-centered-storyriver>> > Multicolumn storyriver</$checkbox>
 :<$checkbox tiddler="$:/config/Tweaks" index="centered-storyriver" checked="yes" unchecked="no" default="no" checkactions=<<disable-multicolumn-storyriver>> > Center storyriver when sidebar closed</$checkbox>
 :<$checkbox tiddler="$:/config/Tweaks" index="right-topbar-pagecontrols" checked="yes" unchecked="no" default="no" > Display right topbar when sidebar closed</$checkbox>
+
+;Other options
+:Tiddler width for centered story river <$edit-text tiddler="$:/config/Tweaks" index="centered-tiddler-width" placeholder="50vw" tag=input/> [[Learn more|https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Values_and_units]] (min width is 600px)
