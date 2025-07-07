@@ -1,7 +1,10 @@
+created: 20250707150636347
+modified: 20250707150658239
 title: $:/plugins/kookma/tweaks/history
 type: text/vnd.tiddlywiki
 
 Full change log  https://kookma.github.io/TW-Tweaks/#ChangeLog
 
+* ''0.2.2'' -- 2025.07.07 -- updated to TiddlyWiki 5.3.7
 * ''0.2.1'' -- 2025.04.17 -- tiddler width setting for centered story river
 * ''0.1.1'' -- 2024.07.22 -- first release
